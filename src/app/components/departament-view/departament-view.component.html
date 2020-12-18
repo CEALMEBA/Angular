@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 form-card">
+            <mat-card>
+                <mat-card-header>
+                    <h4>Registro de departamentos</h4>
+                </mat-card-header>
+                <mat-card-content>
+                    <form class="" (ngSubmit)="onSubmit()">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Id</mat-label>
+                            <input matInput type="number" placeholder="ejemplo: 0001" name="id" [(ngModel)]="departament.id">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput type="text" placeholder="ejemplo: jugueteria" name="name" [(ngModel)]="departament.name">
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>description</mat-label>
+                            <input matInput type="text" placeholder="ejemplo: Area de pelotas" name="lastName" [(ngModel)]="departament.description">
+                        </mat-form-field>
+
+
+                        <button mat-raised-button color="primary" type="submit">Registrar</button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+
+        </div>
+        <div class="col-9 records-view">
+            <h4>Lista de departamentos</h4>
+            <table mat-table [dataSource]="dataSource" style="width: 100%;">
+               
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+              
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+     
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let departament" style="justify-content: space-around; display: flex;">
+                      
+                        <button mat-raised-button color="accent" (click)="openDialog2(departament.id)">
+                            <mat-icon>edit</mat-icon>
+                            actualizar
+                        </button>
+
+                        <button mat-raised-button color="warn" (click)="deleteOneRecord(departament.id)">
+                            <mat-icon>delete</mat-icon>
+                            Eliminar
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[4, 8, 12]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <mat-card>
+        <mat-card-header>
+            <div>
+                <h1>Inicio de sesión</h1>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre de usuario:</label>
+                    <input matInput
+                    type = "text"
+                    [(ngModel)] = "credential.username"
+                    name="username"
+                    required = "required"/>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña:  </label>
+                    <input matInput
+                    type = "password"
+                    [(ngModel)] = "credential.password"
+                    name="email"
+                    required = "required"/>
+                </div>
+        
+                <button mat-raised-button color="primary" type="submit"  (click)="login()">Ingresar</button>
+            </form>
+        </mat-card-content>
+
+    </mat-card>
+</div>
